@@ -1,5 +1,5 @@
 # This module looks into Lists, Tuples, Sets and Dictionaries
-
+# letters = ["a", "b", "c", "d"]
 def lists():
     letters = ["a", "b", "c"]
     matrix = [[0, 1], [2, 3]]
@@ -48,8 +48,90 @@ def loopinglists():
     for letter in enumerate(letters):
         print(letter)
 
-    #enumerate turns list into key(index)/value pair
+    # enumerate turns list into key(index)/value pair
     for index, letter in enumerate(letters):
         print(index, letter)
 
-loopinglists()
+
+def addremovelists():
+    # Add
+    letters = ["a", "b", "c"]
+    letters.append("d")  # add to end of list
+    letters.insert(0, "-")  # add to specific place
+    print(letters)
+
+    # Remove
+    names = ["Peter", "Marcus", "Ray", "Malcolm"]
+    names.pop()  # remove last item
+    names.pop(0)  # remove at specific index
+    names.remove("Ray")
+    # del names[0:3]
+    # letters.clear()
+    print(names)
+
+
+def findingitems():
+    letters = ["a", "b", "c", "c", "z"]
+    print(letters.index("a"))
+    print(letters.count("c"))
+
+    if "d" in letters:
+        print(letters.index("d"))
+
+
+def sortinglistsOne():
+    numbers = [3, 51, 2, 8, 6]
+    numbers.sort()  # modifies original list
+    print(numbers)
+
+    numbers2 = [3, 51, 2, 8, 6]
+    numbers2.sort(reverse=True)  # modifies original list
+    print(numbers2)
+
+    ascending = sorted(numbers)  # Sorted does not change original list
+    decending = sorted(numbers, reverse=True)
+    print(ascending)
+    print(decending)
+
+
+def sortinglistsTwo():
+    items = [
+        ("Product1", 10),
+        ("Product2", 9),
+        ("Product3", 12)
+    ]
+
+    def sort_item(item):
+        return item[1]  # Returns prices
+
+    items.sort(key=sort_item)  # Sort by price
+    print(items)
+
+
+def lambdafunction():
+    items = [
+        ("Product1", 10),
+        ("Product2", 9),
+        ("Product3", 12)
+    ]
+
+    items.sort(key=lambda item: item[1])  # lambda parameters:expression
+    print(items)
+
+
+def mapfunctions():
+    items = [
+        ("Product1", 10),
+        ("Product2", 9),
+        ("Product3", 12)
+    ]
+
+    x = map(lambda item: item[1], items) # Will call the lambda function on each item of iterable items
+    for item in x:
+        print(item)
+
+def anotherlambda(n):
+  return lambda a : a * n
+# mydoubler = myfunc(2)
+# print(mydoubler(11))
+
