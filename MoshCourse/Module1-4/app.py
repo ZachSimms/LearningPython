@@ -1,5 +1,3 @@
-
-
 def agecalculator():
     birth_year = input("What is your birth year? ")
     current_year = 2020
@@ -96,17 +94,19 @@ def infinite_loop():
         if command.lower() == "quit":
             break
 
+
 def controlflowExercise():
     # Input range of values then print even values
     # then states how many even values are in range
     list = []
     start = int(input("Starting number of range: "))
     up_to = int(input("Up to: "))
-    for x in range(start,up_to):
+    for x in range(start, up_to):
         if x % 2 == 0:
             list.append(x)
             print(x)
     print(f"We have {len(list)} even numbers")
+
 
 def controlFlowExercisev2():
     # Input range of values then print even values
@@ -114,7 +114,7 @@ def controlFlowExercisev2():
     count = 0
     start = int(input("Starting number of range: "))
     up_to = int(input("Up to: "))
-    for x in range(start,up_to):
+    for x in range(start, up_to):
         if x % 2 == 0:
             count += 1
             print(x)
@@ -154,23 +154,5 @@ def fizz_buzz(input):
         return "Buzz"
     return input
 
+
 print(fizz_buzz(7))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
