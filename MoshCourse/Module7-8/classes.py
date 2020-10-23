@@ -108,6 +108,7 @@ class Product:
 
 class Animal:
     def __init__(self):
+        print("Animal Constructor")
         self.age = 1
 
     def eat(self):
@@ -116,6 +117,11 @@ class Animal:
 # Animal: Parent, Base
 # Mammal: Child, Sub
 class Mammal(Animal):
+    def __init__(self):
+        super().__init__()
+        print("Mammal Constructor")
+        self.weight = 1
+
     def walk(self):
         print("walk")
 
@@ -123,4 +129,122 @@ class Fish(Animal):
     def swim(self):
         print("swim")
 
+
+# m = Mammal()
+# print(m.age)
+# print(m.weight)
+
+# Good example of multiple inheritance
+class Flyer:
+    pass
+
+class Swimmer:
+    pass
+
+class FlyingFish(Flyer, Swimmer):
+    pass
+
+
+# Good example of Inheritance
+from abc import ABC, abstractmethod
+
+class InvalidOperationError(Exception):
+    pass
+
+class Stream(ABC):
+    def __init__(self):
+        self.open = False
+
+    def open(self):
+        if self.opened:
+            raise InvalidOperationError("Stream is already open")
+        self.opened = True
+
+    def close(self):
+        if not self.opened:
+            raise InvalidOperationError("Stream is already closed")
+        self.opened = False
+
+    @abstractmethod
+    def read(self):
+        pass
+
+class FileStream(Stream):
+    def read(self):
+        print("Reading data from a file")
+
+class FileStream(Stream):
+    def NetworkStream(self):
+        print("Reading data from a network")
+
+class MemoryStream(Stream):
+    def read(self):
+        print("Reading data from a memory stream.")
+
+
+# Polymorphism Example -----
+# Rendering user interface example
+# Can allow work without the UIControl class and it's references
+
+class UIControl(ABC):
+    @abstractmethod
+    def draw(self):
+        pass
+
+class TextBox(UIControl):
+    def draw(self):
+        print("TextBox Drawn")
+
+class DropDownList(UIControl):
+    def draw(self):
+        print("DropDownList Drawn")
+
+def draw(controls):
+    for ui in controls:
+        ui.draw()
+
+# ddl = DropDownList()
+# textbox = TextBox()
+# draw([ddl, textbox])
+
+
+# Extending Built-in Types
+
+class Text(str):
+    def duplicate(self):
+        return self + self
+
+class TrackableList(list):
+    def append(self, object):
+        print("Append called")
+        super().append(object)
+
+# text = Text("Python")
+# print(text.duplicate())
+#
+# list = TrackableList()
+# list.append("1")
+
+
+class PointA:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+
+def PointCalc():
+    p1 = PointA(1, 2)
+    p2 = PointA(1, 2)
+    print(p1 == p2)
+PointCalc()
+
+from collections import namedtuple
+
+PointZ = namedtuple("Point", ["x", "y"])
+p1 = PointZ(x=1, y=2)
+p2 = PointZ(x=1, y=2)
+# p1 and p2 are immutable
+print(p1 == p2)
 
